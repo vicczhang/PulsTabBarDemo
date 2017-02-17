@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RootBC: UITabBarController,VCDelegate {
+class RootBC: UITabBarController,VCDelegate,OBJCDelegate {
 
     override class func initialize(){
         
@@ -25,9 +25,14 @@ class RootBC: UITabBarController,VCDelegate {
         
         let cityVC = CityVC()
         configVC(vc: cityVC, titleString: "位置", defImg: "city_normal", selImg: "city_highlight")
+        /**swift**/
+//        let tabbar = VCTabBar(frame: self.tabBar.frame, titleText: "发布", index: 1, itemCount: 3)
+//        tabbar.cDelegate = self
+//        self.setValue(tabbar, forKey: "tabBar")
         
-        let tabbar = VCTabBar(frame: self.tabBar.frame, titleText: "发布", index: 1, itemCount: 3)
-        tabbar.cDelegate = self
+        /**OC**/
+        let tabbar = OBJCTabBar(frame: self.tabBar.frame, titleText: "发布", index: 1, itemCount: 3)
+        tabbar?.objcDelegate = self
         self.setValue(tabbar, forKey: "tabBar")
     }
 
@@ -49,6 +54,9 @@ class RootBC: UITabBarController,VCDelegate {
     
     func tabBarCenterBtnClick(){
         NSLog("---CenterButtonClick---");
+    }
+    func objcTabBarCenterBtnClick(){
+        NSLog("---CenterButtonClick---OBJC");
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
