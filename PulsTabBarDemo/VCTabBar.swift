@@ -51,6 +51,13 @@ class VCTabBar: UITabBar {
         let btnFrame = CGRect(x: (cenBtn?.frame.origin.x)!, y: (cenBtn?.frame.origin.y)!, width: (cenBtn?.currentBackgroundImage?.size.width)!, height: (cenBtn?.currentBackgroundImage?.size.height)!)
         cenBtn?.frame = btnFrame;
         cenBtn?.center = CGPoint(x: self.center.x, y: self.frame.size.height*0.5 - 20)
+        
+        for view in subviews {
+            if let label = view as? UILabel {
+                label.removeFromSuperview()
+            }
+        }
+        
         if titleText != nil {
             let lable = UILabel()
             lable.text = titleText
